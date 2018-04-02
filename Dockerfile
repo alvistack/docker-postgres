@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM postgres:10.3
+FROM postgres:10
 
 ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
-CMD        [ "/usr/lib/postgresql/10/bin/postgres" ]
+CMD        [ "/bin/sh", "-c", "/usr/local/bin/docker-entrypoint.sh postgres && gosu postgres postgres" ]
 
 # Prepare APT depedencies
 RUN set -ex \
@@ -32,5 +32,5 @@ RUN set -ex \
 COPY files /
 
 # Apply patches
-#RUN set -ex \
-#    && patch -d/ -p1 < /.patch
+RUN set -ex \
+    && patch -d/ -p1 < /.patch
