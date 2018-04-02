@@ -14,8 +14,8 @@
 
 FROM postgres:10
 
-ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
-CMD        [ "/bin/sh", "-c", "/usr/local/bin/docker-entrypoint.sh postgres && gosu postgres postgres $@" ]
+ENTRYPOINT [ "dumb-init", "--" ]
+CMD        [ "sh", "-c", "docker-entrypoint.sh postgres && gosu postgres postgres $@" ]
 
 # Prepare APT depedencies
 RUN set -ex \
