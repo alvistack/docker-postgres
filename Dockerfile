@@ -28,6 +28,11 @@ RUN set -ex \
     && curl -skL https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 > /usr/local/bin/dumb-init \
     && chmod 0755 /usr/local/bin/dumb-init
 
+# Install peer-finder
+RUN set -ex \
+    && curl -skL https://storage.googleapis.com/kubernetes-release/pets/peer-finder > /usr/local/bin/peer-finder \
+    && chmod 0755 /usr/local/bin/peer-finder
+
 # Copy files
 COPY files /
 
