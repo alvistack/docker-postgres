@@ -23,6 +23,12 @@ RUN set -ex \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y curl patch \
     && rm -rf /var/lib/apt/lists/*
 
+# Install pglogical and pgpool2
+RUN set -ex \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y pgpool2 postgresql-$PG_MAJOR-pglogical postgresql-$PG_MAJOR-pgpool2 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install dumb-init
 RUN set -ex \
     && curl -skL https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 > /usr/local/bin/dumb-init \
