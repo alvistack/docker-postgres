@@ -47,7 +47,7 @@ Start PostgreSQL:
         --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
         --env POSTGRES_PASSWORD=Passw0rd\! \
         alvistack/postgres \
-        docker-entrypoint.sh
+        docker-entrypoint.sh postgres
 
     # Run as detach
     docker run \
@@ -56,7 +56,7 @@ Start PostgreSQL:
         --publish 5432:5432 \
         --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
         alvistack/postgres \
-        postgres
+        gosu postgres postgres
 
 **Success**. PostgreSQL is now available on port 5432.
 
