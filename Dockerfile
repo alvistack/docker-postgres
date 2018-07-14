@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM postgres:10
+FROM postgres:11
 
 ENTRYPOINT [ "dumb-init", "--" ]
 CMD        [ "sh", "-c", "docker-entrypoint.sh postgres && gosu postgres postgres $@" ]
