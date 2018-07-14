@@ -14,6 +14,7 @@ Supported Tags and Respective `Dockerfile` Links
 ------------------------------------------------
 
 -   [`latest` (master/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/master/Dockerfile)
+-   [`11` (11/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/11/Dockerfile)
 -   [`10` (10/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/10/Dockerfile)
 -   [`9.6` (9.6/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.6/Dockerfile)
 -   [`9.5` (9.5/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.5/Dockerfile)
