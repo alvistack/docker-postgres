@@ -1,5 +1,4 @@
-Docker Image Packaging for PostgreSQL
-=====================================
+# Docker Image Packaging for PostgreSQL
 
 [![Travis](https://img.shields.io/travis/alvistack/docker-postgres.svg)](https://travis-ci.org/alvistack/docker-postgres)
 [![GitHub release](https://img.shields.io/github/release/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/releases)
@@ -10,30 +9,28 @@ PostgreSQL is a powerful, open source object-relational database system. It has 
 
 Learn more about PostgreSQL: <https://www.postgresql.org/>
 
-Supported Tags and Respective `Dockerfile` Links
-------------------------------------------------
+## Supported Tags and Respective `Dockerfile` Links
 
--   [`latest` (master/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/master/Dockerfile)
--   [`11` (11/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/11/Dockerfile)
--   [`10` (10/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/10/Dockerfile)
--   [`9.6` (9.6/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.6/Dockerfile)
--   [`9.5` (9.5/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.5/Dockerfile)
--   [`9.4` (9.4/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.4/Dockerfile)
--   [`9.3` (9.3/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.3/Dockerfile)
+  - [`latest` (master/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/master/Dockerfile)
+  - [`11` (11/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/11/Dockerfile)
+  - [`10` (10/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/10/Dockerfile)
+  - [`9.6` (9.6/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.6/Dockerfile)
+  - [`9.5` (9.5/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.5/Dockerfile)
+  - [`9.4` (9.4/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.4/Dockerfile)
+  - [`9.3` (9.3/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.3/Dockerfile)
 
-Overview
---------
+## Overview
 
 This Docker container makes it easy to get an instance of PostgreSQL up and running.
 
 Based on [Official PostgreSQL Docker Image](https://hub.docker.com/_/postgres/) with some minor hack:
 
--   Handle `ENTRYPOINT` with [dumb-init](https://github.com/Yelp/dumb-init)
--   `docker-entrypoint.sh` will *NOT* handle the start of PID 1, therefore you could execute it independently with [Kubernetes Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) for initializing [PostgreSQL Data Directory](https://www.postgresql.org/docs/10/static/runtime-config-file-locations.html)
+  - Handle `ENTRYPOINT` with [dumb-init](https://github.com/Yelp/dumb-init)
+  - `docker-entrypoint.sh` will *NOT* handle the start of PID 1, therefore you could execute it independently with [Kubernetes Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) for initializing [PostgreSQL Data Directory](https://www.postgresql.org/docs/10/static/runtime-config-file-locations.html)
 
 ### Quick Start
 
-For the `VOLUME` directory that is used to store the repository data (amongst other things) we recommend mounting a host directory as a [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/data-volumes), or via a named volume if using a docker version &gt;= 1.9.
+For the `VOLUME` directory that is used to store the repository data (amongst other things) we recommend mounting a host directory as a [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/data-volumes), or via a named volume if using a docker version \>= 1.9.
 
 Start PostgreSQL:
 
@@ -61,21 +58,17 @@ Start PostgreSQL:
 
 **Success**. PostgreSQL is now available on port 5432.
 
-Versioning
-----------
+## Versioning
 
 The `latest` tag matches the most recent version of this repository. Thus using `alvistack/postgres:latest` or `alvistack/postgres` will ensure you are running the most up to date version of this image.
 
-License
--------
+## License
 
--   Code released under [Apache License 2.0](LICENSE)
--   Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+  - Code released under [Apache License 2.0](LICENSE)
+  - Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
-Author Information
-------------------
+## Author Information
 
--   Wong Hoi Sing Edison
-    -   <https://twitter.com/hswong3i>
-    -   <https://github.com/hswong3i>
-
+  - Wong Hoi Sing Edison
+      - <https://twitter.com/hswong3i>
+      - <https://github.com/hswong3i>
