@@ -36,7 +36,7 @@ Start PostgreSQL:
 
     # Pull latest image
     docker pull alvistack/postgres
-
+    
     # To initialize VOLUME
     docker run \
         -it \
@@ -46,7 +46,7 @@ Start PostgreSQL:
         --env POSTGRES_PASSWORD=Passw0rd\! \
         alvistack/postgres \
         docker-entrypoint.sh postgres
-
+    
     # Run as detach
     docker run \
         -itd \
