@@ -44,4 +44,4 @@ COPY files /
 
 # Apply patches
 RUN set -ex \
-    && patch -d/ -p1 < /.patch
+    && patch -d / -p1 < /.patch
