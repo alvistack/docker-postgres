@@ -17,7 +17,7 @@ FROM postgres:11
 ENTRYPOINT [ "dumb-init", "--" ]
 CMD        [ "sh", "-c", "docker-entrypoint.sh postgres && gosu postgres postgres $@" ]
 
-# Prepare APT depedencies
+# Prepare APT dependencies
 RUN set -ex \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y curl patch \
