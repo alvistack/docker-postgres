@@ -14,8 +14,8 @@
 
 FROM postgres:11
 
-ENTRYPOINT [ "dumb-init", "--" ]
-CMD        [ "sh", "-c", "docker-entrypoint.sh postgres && gosu postgres postgres $@" ]
+ENTRYPOINT [ "dumb-init", "--", "docker-entrypoint.sh"]
+CMD        [ "postgres" ]
 
 # Prepare APT dependencies
 RUN set -ex \
@@ -41,7 +41,3 @@ RUN set -ex \
 
 # Copy files
 COPY files /
-
-# Apply patches
-RUN set -ex \
-    && patch -d / -p1 < /.patch

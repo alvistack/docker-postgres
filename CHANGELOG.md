@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Revamp CMD as upstream image
   - Add some debug utils
 
 ## 11.0.0-0alvistack1 - 2018-10-29
