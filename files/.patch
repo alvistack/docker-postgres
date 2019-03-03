@@ -1,9 +1,0 @@
-diff -urp a/usr/local/bin/docker-entrypoint.sh b/usr/local/bin/docker-entrypoint.sh
---- a/usr/local/bin/docker-entrypoint.sh	2018-03-15 00:52:51.000000000 +0800
-+++ b/usr/local/bin/docker-entrypoint.sh	2018-04-02 20:48:25.334960096 +0800
-@@ -141,5 +141,3 @@ if [ "$1" = 'postgres' ]; then
- 		echo
- 	fi
- fi
--
--exec "$@"

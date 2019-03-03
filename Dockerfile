@@ -14,13 +14,13 @@
 
 FROM postgres:11
 
-ENTRYPOINT [ "dumb-init", "--" ]
-CMD        [ "sh", "-c", "docker-entrypoint.sh postgres && gosu postgres postgres $@" ]
+ENTRYPOINT [ "dumb-init", "--", "docker-entrypoint.sh"]
+CMD        [ "postgres" ]
 
-# Prepare APT depedencies
+# Prepare APT dependencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl patch \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl htop less patch vim wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pglogical and pgpool2
@@ -41,7 +41,3 @@ RUN set -ex \
 
 # Copy files
 COPY files /
-
-# Apply patches
-RUN set -ex \
-    && patch -d/ -p1 < /.patch
