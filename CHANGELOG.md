@@ -2,7 +2,13 @@
 
 ## 11.0.x-0alvistack1 - TBC
 
+### Major Changes
+
+  - Add some debug utils
+
 ## 11.0.0-0alvistack1 - 2018-10-29
+
+### Major Changes
 
   - Upgrade Docker base image to postgres:11
   - Update dumb-init to v.1.2.2
