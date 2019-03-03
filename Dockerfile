@@ -38,6 +38,3 @@ RUN set -ex \
 RUN set -ex \
     && curl -skL https://storage.googleapis.com/kubernetes-release/pets/peer-finder > /usr/local/bin/peer-finder \
     && chmod 0755 /usr/local/bin/peer-finder
-
-# Copy files
-COPY files /
