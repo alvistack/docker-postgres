@@ -26,7 +26,6 @@ This Docker container makes it easy to get an instance of PostgreSQL up and runn
 Based on [Official PostgreSQL Docker Image](https://hub.docker.com/_/postgres/) with some minor hack:
 
   - Handle `ENTRYPOINT` with [dumb-init](https://github.com/Yelp/dumb-init)
-  - `docker-entrypoint.sh` will *NOT* handle the start of PID 1, therefore you could execute it independently with [Kubernetes Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) for initializing [PostgreSQL Data Directory](https://www.postgresql.org/docs/10/static/runtime-config-file-locations.html)
 
 ### Quick Start
 
@@ -37,24 +36,13 @@ Start PostgreSQL:
     # Pull latest image
     docker pull alvistack/postgres
     
-    # To initialize VOLUME
-    docker run \
-        -it \
-        --rm \
-        --name postgres \
-        --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
-        --env POSTGRES_PASSWORD=Passw0rd\! \
-        alvistack/postgres \
-        docker-entrypoint.sh postgres
-    
     # Run as detach
     docker run \
         -itd \
         --name postgres \
         --publish 5432:5432 \
         --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
-        alvistack/postgres \
-        gosu postgres postgres
+        alvistack/postgres
 
 **Success**. PostgreSQL is now available on port 5432.
 
