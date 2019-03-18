@@ -1,11 +1,16 @@
 # Docker Image Packaging for PostgreSQL
 
-## 11.0.x-0alvistack1 - TBC
+## 11.2.x-0alvistack1 - TBC
+
+### Major Changes
+
+## 11.2.0-0alvistack5 - 2019-03-18
 
 ### Major Changes
 
   - Revamp CMD as upstream image
   - Add some debug utils
+  - Add checksum for curl
 
 ## 11.0.0-0alvistack1 - 2018-10-29
 
