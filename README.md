@@ -17,7 +17,6 @@ Learn more about PostgreSQL: <https://www.postgresql.org/>
   - [`9.6` (9.6/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.6/Dockerfile)
   - [`9.5` (9.5/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.5/Dockerfile)
   - [`9.4` (9.4/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.4/Dockerfile)
-  - [`9.3` (9.3/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/9.3/Dockerfile)
 
 ## Overview
 
