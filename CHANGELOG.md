@@ -6,6 +6,7 @@
 
   - Revamp CMD as upstream image
   - Add some debug utils
+  - Add checksum for curl
 
 ## 11.0.0-0alvistack1 - 2018-10-29
 
