@@ -1,8 +1,15 @@
 # Docker Image Packaging for PostgreSQL
 
-## 11.2.x-0alvistack1 - TBC
+## 11.2.0-0alvistackx - TBC
 
 ### Major Changes
+
+## 11.2.0-0alvistack7 - 2019-04-16
+
+### Major Changes
+
+  - Remove legacy 9.3 support as upstream image
+  - Improve checksum handling
 
 ## 11.2.0-0alvistack5 - 2019-03-18
 
