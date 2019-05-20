@@ -1,8 +1,14 @@
 # Docker Image Packaging for PostgreSQL
 
-## 11.2.0-0alvistackx - TBC
+## 11.3.0-0alvistackx - TBC
 
 ### Major Changes
+
+## 11.3.0-0alvistack1 - 2019-05-20
+
+### Major Changes
+
+  - Bugfix "Build times out because no output was received"
 
 ## 11.2.0-0alvistack7 - 2019-04-16
 
