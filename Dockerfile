@@ -12,38 +12,60 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM postgres:11
+FROM ubuntu:18.04
 
-ENV DUMB_INIT_DOWNLOAD_URL        "https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64"
-ENV DUMB_INIT_DOWNLOAD_CHECKSUM   "c16e45a301234c732af4c38be1e1000a2ce1cba8"
-ENV PEER_FINDER_DOWNLOAD_URL      "https://storage.googleapis.com/kubernetes-release/pets/peer-finder"
-ENV PEER_FINDER_DOWNLOAD_CHECKSUM "5abfeabdd8c011ddf6b0abf33011c5866ff7eb39"
+ENV LANG   "en_US.utf8"
+ENV LC_ALL "en_US.utf8"
+ENV SHELL  "/bin/bash"
+ENV TZ     "UTC"
 
-ENTRYPOINT [ "dumb-init", "--", "docker-entrypoint.sh"]
+ENV POSTGRES_RELEASE "11"
+ENV PGDATA           "/var/lib/postgresql/data"
+ENV PATH             "$PATH:/usr/lib/postgresql/$POSTGRES_RELEASE/bin"
+
+VOLUME  $PGDATA
+WORKDIR $PGDATA
+
+EXPOSE 5432
+
+ENTRYPOINT [ "dumb-init", "--", "docker-entrypoint.sh" ]
 CMD        [ "postgres" ]
+
+# Hotfix for en_US.utf8 locale
+RUN set -ex \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install locales \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Explicitly set system user UID/GID
+RUN set -ex \
+    && groupadd -r postgres \
+    && useradd -r -g postgres -d /var/lib/postgresql -M -s /bin/bash postgres
 
 # Prepare APT dependencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl htop less patch vim wget \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install ca-certificates curl gcc git libffi-dev libssl-dev lsb-release make python3 python3-dev sudo \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pglogical and pgpool2
+# Install PIP
 RUN set -ex \
-    && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y pgpool2 postgresql-$PG_MAJOR-pglogical postgresql-$PG_MAJOR-pgpool2 \
+    && curl -skL https://bootstrap.pypa.io/get-pip.py | python3
+
+# Copy files
+COPY files /
+
+# Bootstrap with Ansible
+RUN set -ex \
+    && cd /etc/ansible/roles/localhost \
+    && pip3 install --upgrade --ignore-installed --requirement requirements.txt \
+    && molecule dependency \
+    && molecule lint \
+    && molecule syntax \
+    && molecule converge \
+    && molecule verify \
+    && rm -rf /var/cache/ansible/* \
+    && rm -rf /root/.cache/* \
+    && rm -rf /tmp/* \
     && rm -rf /var/lib/apt/lists/*
-
-# Install dumb-init
-RUN set -ex \
-    && curl -skL $DUMB_INIT_DOWNLOAD_URL> /usr/local/bin/dumb-init \
-    && sha1sum /usr/local/bin/dumb-init \
-    && echo "$DUMB_INIT_DOWNLOAD_CHECKSUM /usr/local/bin/dumb-init" | sha1sum -c - \
-    && chmod 0755 /usr/local/bin/dumb-init
-
-# Install peer-finder
-RUN set -ex \
-    && curl -skL $PEER_FINDER_DOWNLOAD_URL > /usr/local/bin/peer-finder \
-    && sha1sum /usr/local/bin/peer-finder \
-    && echo "$PEER_FINDER_DOWNLOAD_CHECKSUM /usr/local/bin/peer-finder" | sha1sum -c - \
-    && chmod 0755 /usr/local/bin/peer-finder
