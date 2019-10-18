@@ -1,10 +1,10 @@
 # Docker Image Packaging for PostgreSQL
 
-## 11.5.0-0alvistackx - TBC
+## 11.5.0-1alvistackx - TBC
 
 ### Major Changes
 
-## 11.5.0-0alvistack1 - 2019-10-18
+## 11.5.0-1alvistack1 - 2019-10-18
 
 ### Major Changes
 
