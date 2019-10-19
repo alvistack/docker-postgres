@@ -33,8 +33,10 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/postgres" }
+    - { dest: "/docker-entrypoint-initdb.d" }
     - { dest: "/usr/local/bin" }
+    - { dest: "/usr/share/postgresql/{{ postgres_release }}" }
+    - { dest: "/var/lib/postgresql", owner: "postgres", group: "postgres" }
     - { dest: "/var/lib/postgresql/data", owner: "postgres", group: "postgres", mode: "0777" }
     - { dest: "/var/run/postgresql", owner: "postgres", group: "postgres", mode: "2777" }
   tags: localhost
@@ -48,6 +50,7 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/usr/local/bin/docker-entrypoint.sh", mode: "0755" }
+    - { dest: "/usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample" }
   tags: localhost
 
 - name: prepare files
@@ -59,4 +62,5 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/usr/local/bin/docker-entrypoint.sh", mode: "0755" }
+    - { dest: "/usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample" }
   tags: localhost
