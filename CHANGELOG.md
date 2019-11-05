@@ -1,8 +1,17 @@
 # Docker Image Packaging for PostgreSQL
 
-## 11.5.0-1alvistackx - TBC
+## 11.5.0-XalvistackY - TBC
 
 ### Major Changes
+
+## 11.5.0-2alvistack3 - 2019-11-05
+
+### Major Changes
+
+  - Upgrade minimal Ansible support to 2.9.0
+  - Upgrade Travis CI test as Ubuntu Bionic based
+  - Default with Python 3
+  - Hotfix for en\_US.utf8 locale
 
 ## 11.5.0-1alvistack1 - 2019-10-18
 
