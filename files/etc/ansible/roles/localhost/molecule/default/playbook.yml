@@ -29,5 +29,4 @@
   remote_user: root
   roles:
     - role: postgres
-      postgres_release: "{{ lookup('env', 'POSTGRES_RELEASE') }}"
     - role: localhost
