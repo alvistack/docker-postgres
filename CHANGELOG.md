@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-  - Prepare postgresql.conf.sample as upstream image
+  - Prepare `/usr/share/postgresql/postgresql.conf.sample` as upstream image
 
 ## 11.5.0-2alvistack3 - 2019-11-05
 

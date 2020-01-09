@@ -63,7 +63,7 @@
     - { dest: "/usr/local/bin/docker-entrypoint.sh", mode: "0755" }
   tags: localhost
 
-- name: prepare postgresql.conf.sample
+- name: "prepare /usr/share/postgresql/postgresql.conf.sample"
   shell: |
     set -o pipefail
     mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
@@ -71,7 +71,6 @@
     sed -ri "s!^#?(listen_addresses)\s*=\s*\S+.*!\1 = '*'!" /usr/share/postgresql/postgresql.conf.sample
   args:
     executable: "/bin/bash"
-    creates: "/usr/share/postgresql/postgresql.conf.sample"
   register: result
   until: result is succeeded
   changed_when: result is not succeeded
