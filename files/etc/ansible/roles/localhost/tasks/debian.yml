@@ -45,10 +45,32 @@
     set -o pipefail
     mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
     ln -s ../postgresql.conf.sample /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample
-    sed -ri "s/^#*listen_addresses.*/listen_addresses = '*'/g" /usr/share/postgresql/postgresql.conf.sample
   args:
     executable: "/bin/bash"
   register: result
   until: result is succeeded
   changed_when: result is not succeeded
+  tags: localhost
+
+- name: copy templates
+  template:
+    dest: "{{ item.dest }}"
+    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    backup: true
+  loop:
+    - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
+  tags: localhost
+
+- name: prepare files
+  file:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    state: "{{ item.state | default('file') }}"
+  loop:
+    - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
   tags: localhost
