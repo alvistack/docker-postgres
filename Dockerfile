@@ -28,7 +28,7 @@ WORKDIR $PGDATA
 
 EXPOSE 5432
 
-ENTRYPOINT [ "dumb-init", "--", "docker-entrypoint.sh" ]
+ENTRYPOINT [ "tini", "-g", "--", "docker-entrypoint.sh" ]
 CMD        [ "postgres" ]
 
 # Hotfix for en_US.utf8 locale

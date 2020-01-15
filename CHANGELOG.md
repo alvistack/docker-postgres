@@ -1,10 +1,17 @@
 # Docker Image Packaging for PostgreSQL
 
-## 11.5.0-XalvistackY - TBC
+## 12.1.0-XalvistackY - TBC
 
 ### Major Changes
 
-  - Prepare `/usr/share/postgresql/postgresql.conf.sample` as upstream image
+## 12.1.0-3alvistack1 - 2020-01-15
+
+### Major Changes
+
+  - Replace `dumb-init` with `tini`, as like as `docker --init`
+  - Include release specific vars and tasks
+  - Revamp template for `/usr/share/postgresql/postgresql.conf.sample`
+  - Backport `/usr/local/bin/docker-entrypoint.sh` from upstream
 
 ## 11.5.0-2alvistack3 - 2019-11-05
 
