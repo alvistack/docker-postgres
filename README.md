@@ -22,7 +22,7 @@ This Docker container makes it easy to get an instance of PostgreSQL up and runn
 
 Based on [Official PostgreSQL Docker Image](https://hub.docker.com/_/postgres/) with some minor hack:
 
-  - Handle `ENTRYPOINT` with [dumb-init](https://github.com/Yelp/dumb-init)
+  - Handle `ENTRYPOINT` with [tini](https://github.com/krallin/tini)
 
 ### Quick Start
 
