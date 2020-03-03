@@ -11,17 +11,18 @@ Learn more about PostgreSQL: <https://www.postgresql.org/>
 
 ## Supported Tags and Respective `Dockerfile` Links
 
-  - [`latest` (master/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/master/Dockerfile)
-  - [`12` (12/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/12/Dockerfile)
-  - [`11` (11/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/11/Dockerfile)
-  - [`10` (10/Dockerfile)](https://github.com/alvistack/docker-postgres/blob/10/Dockerfile)
+  - [`12`, `latest`](https://github.com/alvistack/docker-postgres/blob/master/molecule/12/Dockerfile.j2)
+  - [`11`](https://github.com/alvistack/docker-postgres/blob/master/molecule/11/Dockerfile.j2)
+  - [`10`](https://github.com/alvistack/docker-postgres/blob/master/molecule/10/Dockerfile.j2)
 
 ## Overview
 
 This Docker container makes it easy to get an instance of PostgreSQL up and running.
 
-Based on [Official PostgreSQL Docker Image](https://hub.docker.com/_/postgres/) with some minor hack:
+Based on [Official Ubuntu Docker Image](https://hub.docker.com/_/ubuntu/) with some minor hack:
 
+  - Minimized `Dockerfile` for meta data definition
+  - Provision by Ansible and Molecule Docker driver in single layer
   - Handle `ENTRYPOINT` with [tini](https://github.com/krallin/tini)
 
 ### Quick Start
