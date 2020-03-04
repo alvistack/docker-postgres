@@ -1,10 +1,15 @@
 # Docker Image Packaging for PostgreSQL
 
-## 12.1.0-XalvistackY - TBC
+## 12.2.0-XalvistackY - TBC
+
+### Major Changes
+
+## 12.2.0-4alvistack1 - 2020-03-04
 
 ### Major Changes
 
   - Revamp with Molecule and `docker commit`
+  - Hotfix for systemd
 
 ## 12.1.0-3alvistack1 - 2020-01-15
 
