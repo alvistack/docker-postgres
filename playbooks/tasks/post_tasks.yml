@@ -69,12 +69,3 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
-
-- name: flush cache
-  shell: |
-    set -o pipefail
-    rm -rf /var/lib/apt/lists/*
-  args:
-    executable: "/bin/bash"
-  changed_when: false
-  ignore_errors: true
