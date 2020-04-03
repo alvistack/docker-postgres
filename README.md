@@ -1,6 +1,6 @@
 # Docker Image Packaging for PostgreSQL
 
-[![Travis](https://img.shields.io/travis/alvistack/docker-postgres.svg)](https://travis-ci.org/alvistack/docker-postgres)
+[![Travis](https://img.shields.io/travis/com/alvistack/docker-postgres.svg)](https://travis-ci.com/alvistack/docker-postgres)
 [![GitHub release](https://img.shields.io/github/release/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/blob/master/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/postgres.svg)](https://hub.docker.com/r/alvistack/postgres/)
@@ -52,7 +52,7 @@ The `latest` tag matches the most recent [GitHub Release](https://github.com/alv
 
 ### `alvistack/postgres:<version>`
 
-The version tags are rolling release rebuild by [Travis](https://travis-ci.org/alvistack/docker-postgres) in weekly basis. Thus using these tags will ensure you are running the latest packages provided by the base image project.
+The version tags are rolling release rebuild by [Travis](https://travis-ci.com/alvistack/docker-postgres) in weekly basis. Thus using these tags will ensure you are running the latest packages provided by the base image project.
 
 ## License
 
