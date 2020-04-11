@@ -36,7 +36,7 @@
     - { dest: "/usr/share/postgresql/{{ postgres_release }}" }
     - { dest: "/var/lib/postgresql", owner: "postgres", group: "postgres" }
     - { dest: "/var/lib/postgresql/data", owner: "postgres", group: "postgres" }
-    - { dest: "/var/run/postgresql", owner: "postgres", group: "postgres" }
+    - { dest: "/var/run/postgresql", owner: "postgres", group: "postgres", mode: "2775" }
 
 - name: "prepare /usr/share/postgresql/postgresql.conf.sample"
   shell: |
