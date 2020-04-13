@@ -34,19 +34,34 @@
             - "./vars"
       ignore_errors: true
 
-    - name: include release specific tasks
-      include_tasks: "{{ lookup('first_found', _params) }}"
-      vars:
-        _params:
-          files:
-            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
-            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
-            - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
-            - "{{ ansible_distribution | lower }}.yml"
-            - "{{ ansible_os_family | lower }}.yml"
-          paths:
-            - "./tasks"
+    - name: stop service
+      service:
+        name: "postgresql"
+        state: "stopped"
+        enabled: true
+      changed_when: false
       ignore_errors: true
+
+    - name: purge /var/lib/postgresql/data
+      shell: |
+        set -o pipefail
+        find /var/lib/postgresql/data -mindepth 1 -delete
+      args:
+        executable: "/bin/bash"
+      register: result
+      changed_when: result is not succeeded
+
+    - name: re-create /var/run/postgresql
+      shell: |
+        set -o pipefail
+        rm -rf /var/run/postgresql
+        mkdir -p /var/run/postgresql
+        chown -Rf postgres:postgres /var/run/postgresql
+        chmod 2777 /var/run/postgresql
+      args:
+        executable: "/bin/bash"
+      register: result
+      changed_when: result is not succeeded
 
     - name: prepare directories
       file:
@@ -56,7 +71,23 @@
         mode: "{{ item.mode | default('0755') }}"
         state: "{{ item.state | default('directory') }}"
       loop:
-        - { dest: "/usr/local/bin" }
+        - { dest: "/docker-entrypoint-initdb.d" }
+        - { dest: "/usr/share/postgresql/{{ postgres_release }}" }
+        - { dest: "/var/lib/postgresql", owner: "postgres", group: "postgres" }
+        - { dest: "/var/lib/postgresql/data", owner: "postgres", group: "postgres" }
+        - { dest: "/var/run/postgresql", owner: "postgres", group: "postgres", mode: "2777" }
+
+    - name: "prepare /usr/share/postgresql/postgresql.conf.sample"
+      shell: |
+        set -o pipefail
+        mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
+        ln -s ../postgresql.conf.sample /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample
+      args:
+        executable: "/bin/bash"
+        creates: "/usr/share/postgresql/postgresql.conf.sample"
+      register: result
+      until: result is succeeded
+      changed_when: result is not succeeded
 
     - name: copy templates
       template:
@@ -66,7 +97,7 @@
         group: "{{ item.group | default('root') }}"
         mode: "{{ item.mode | default('0644') }}"
       loop:
-        - { dest: "/usr/local/bin/docker-entrypoint.sh", mode: "0755" }
+        - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
 
     - name: prepare files
       file:
@@ -76,25 +107,4 @@
         mode: "{{ item.mode | default('0644') }}"
         state: "{{ item.state | default('file') }}"
       loop:
-        - { dest: "/usr/local/bin/docker-entrypoint.sh", mode: "0755" }
-
-    - include_role:
-        name: bootstrap
-
-    - include_role:
-        name: python
-
-    - include_role:
-        name: locales
-
-    - include_role:
-        name: timezone
-
-    - include_role:
-        name: tini
-
-    - include_role:
-        name: gosu
-
-    - include_role:
-        name: postgres
+        - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
