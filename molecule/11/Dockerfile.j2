@@ -49,7 +49,7 @@ WORKDIR $PGDATA
 
 EXPOSE 5432
 
-ENTRYPOINT [ "tini", "-g", "--", "docker-entrypoint.sh" ]
+ENTRYPOINT [ "catatonit", "-g", "--", "docker-entrypoint.sh" ]
 CMD        [ "postgres" ]
 
 # Explicitly set system user UID/GID
