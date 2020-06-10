@@ -1,9 +1,10 @@
 # Docker Image Packaging for PostgreSQL
 
-## 12.2.0-XalvistackY - TBC
+## 12.3.0-XalvistackY - TBC
 
 ### Major Changes
 
+  - Revamp `create`, `side_effect`, `verify` and `destroy` logic
   - Replace `tini` with `catatonit`
   - Rename `post_tasks.yml` as `side_effect.yml`
   - Upgrade base image to Ubuntu 20.04
