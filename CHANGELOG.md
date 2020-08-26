@@ -1,6 +1,10 @@
 # Docker Image Packaging for PostgreSQL
 
-## 12.3.0-XalvistackY - TBC
+## 12.4.0-XalvistackY - TBC
+
+### Major Changes
+
+## 12.4.0-4alvistack2 - 2020-08-26
 
 ### Major Changes
 
