@@ -1,9 +1,14 @@
 # Docker Image Packaging for PostgreSQL
 
-## 12.3.0-XalvistackY - TBC
+## 12.4.0-XalvistackY - TBC
 
 ### Major Changes
 
+## 12.4.0-4alvistack2 - 2020-08-26
+
+### Major Changes
+
+  - Upgrade minimal Ansible Lint support to 4.3.2
   - Upgrade Travis CI test as Ubuntu Focal based
   - Upgrade minimal Ansible support to 2.10.0
 
