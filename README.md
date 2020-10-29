@@ -9,11 +9,11 @@ PostgreSQL is a powerful, open source object-relational database system. It has 
 
 Learn more about PostgreSQL: <https://www.postgresql.org/>
 
-## Supported Tags and Respective `Dockerfile` Links
+## Supported Tags and Respective Packer Template Links
 
-  - [`12`, `latest`](https://github.com/alvistack/docker-postgres/blob/master/molecule/12/Dockerfile.j2)
-  - [`11`](https://github.com/alvistack/docker-postgres/blob/master/molecule/11/Dockerfile.j2)
-  - [`10`](https://github.com/alvistack/docker-postgres/blob/master/molecule/10/Dockerfile.j2)
+  - [`12`, `latest`](https://github.com/alvistack/docker-postgres/blob/master/packer/12/packer.json)
+  - [`11`](https://github.com/alvistack/docker-postgres/blob/master/packer/11/packer.json)
+  - [`10`](https://github.com/alvistack/docker-postgres/blob/master/packer/10/packer.json)
 
 ## Overview
 
@@ -21,8 +21,7 @@ This Docker container makes it easy to get an instance of PostgreSQL up and runn
 
 Based on [Official Ubuntu Docker Image](https://hub.docker.com/_/ubuntu/) with some minor hack:
 
-  - Minimized `Dockerfile` for meta data definition
-  - Provision by Ansible and Molecule Docker driver in single layer
+  - Packaging by Packer Docker builder and Ansible provisioner in single layer
   - Handle `ENTRYPOINT` with [catatonit](https://github.com/openSUSE/catatonit)
 
 ### Quick Start
