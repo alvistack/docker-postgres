@@ -70,6 +70,9 @@
     sudo docker push $_ORG/$_IMAGE:$_TAG
 
 .job-packer-build: &job-packer-build
+  cache:
+    paths:
+      - packer/*/output-docker/*.tar.gz
   script:
     - *script-bootstrap-packer
     - *script-bootstrap-docker
@@ -78,11 +81,19 @@
     - *script-packer-build
 
 .job-docker-run: &job-docker-run
+  cache:
+    paths:
+      - packer/*/output-docker/*.tar.gz
+    policy: pull
   script:
     - *script-bootstrap-docker
     - *script-docker-run
 
 .job-docker-push: &job-docker-push
+  cache:
+    paths:
+      - packer/*/output-docker/*.tar.gz
+    policy: pull
   script:
     - *script-bootstrap-docker
     - *script-docker-push
@@ -96,8 +107,6 @@ build:docker-12:
   stage: build
   cache:
     key: "$CI_PIPELINE_ID-docker-12"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "12"
@@ -107,12 +116,10 @@ test:docker-12:
   stage: test
   cache:
     key: "$CI_PIPELINE_ID-docker-12"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "12"
-  dependencies:
+  needs:
     - build:docker-12
 
 deploy:docker-12:
@@ -120,12 +127,10 @@ deploy:docker-12:
   stage: deploy
   cache:
     key: "$CI_PIPELINE_ID-docker-12"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "12"
-  dependencies:
+  needs:
     - test:docker-12
 
 build:docker-11:
@@ -133,8 +138,6 @@ build:docker-11:
   stage: build
   cache:
     key: "$CI_PIPELINE_ID-docker-11"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "11"
@@ -144,12 +147,10 @@ test:docker-11:
   stage: test
   cache:
     key: "$CI_PIPELINE_ID-docker-11"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "11"
-  dependencies:
+  needs:
     - build:docker-11
 
 deploy:docker-11:
@@ -157,12 +158,10 @@ deploy:docker-11:
   stage: deploy
   cache:
     key: "$CI_PIPELINE_ID-docker-11"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "11"
-  dependencies:
+  needs:
     - test:docker-11
 
 build:docker-10:
@@ -170,8 +169,6 @@ build:docker-10:
   stage: build
   cache:
     key: "$CI_PIPELINE_ID-docker-10"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "10"
@@ -181,12 +178,10 @@ test:docker-10:
   stage: test
   cache:
     key: "$CI_PIPELINE_ID-docker-10"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "10"
-  dependencies:
+  needs:
     - build:docker-10
 
 deploy:docker-10:
@@ -194,10 +189,8 @@ deploy:docker-10:
   stage: deploy
   cache:
     key: "$CI_PIPELINE_ID-docker-10"
-    paths:
-      - packer/*/output-docker/*.tar.gz
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "10"
-  dependencies:
+  needs:
     - test:docker-10
