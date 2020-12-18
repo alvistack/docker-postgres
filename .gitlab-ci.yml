@@ -96,6 +96,7 @@ deploy:docker-12:
     key: "$CI_PIPELINE_ID-docker-12"
     paths:
       - packer/*/output-docker/*.tar.gz
+    policy: pull
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "12"
@@ -120,6 +121,7 @@ deploy:docker-11:
     key: "$CI_PIPELINE_ID-docker-11"
     paths:
       - packer/*/output-docker/*.tar.gz
+    policy: pull
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "11"
@@ -144,6 +146,7 @@ deploy:docker-10:
     key: "$CI_PIPELINE_ID-docker-10"
     paths:
       - packer/*/output-docker/*.tar.gz
+    policy: pull
   variables:
     _PACKER_BUILDER_PROVIDER: "docker"
     _PACKER_BUILDER_VERSION: "10"
