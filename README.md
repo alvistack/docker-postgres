@@ -1,6 +1,6 @@
 # Docker Image Packaging for PostgreSQL
 
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/docker-postgres/master)](https://gitlab.com/alvistack/docker-postgres/-/pipelines)
+[![GitLab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/docker-postgres/master)](https://gitlab.com/alvistack/docker-postgres/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/blob/master/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/postgres.svg)](https://hub.docker.com/r/alvistack/postgres/)
