@@ -34,7 +34,7 @@ For the `VOLUME` directory that is used to store the repository data (amongst ot
 Start PostgreSQL:
 
     # Pull latest image
-    docker pull alvistack/postgres
+    docker pull alvistack/postgres-12
     
     # Run as detach
     docker run \
@@ -42,7 +42,7 @@ Start PostgreSQL:
         --name postgres \
         --publish 5432:5432 \
         --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
-        alvistack/postgres
+        alvistack/postgres-12
 
 **Success**. PostgreSQL is now available on port 5432.
 
