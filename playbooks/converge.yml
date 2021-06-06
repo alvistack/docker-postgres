@@ -98,7 +98,7 @@
 
     - name: purge /var/lib/postgresql/data
       shell: |
-        set -euo pipefail
+        set -euxo pipefail
         mkdir -p /var/lib/postgresql/data
         find /var/lib/postgresql/data -mindepth 1 -delete
       args:
@@ -108,7 +108,7 @@
 
     - name: re-create /var/run/postgresql
       shell: |
-        set -euo pipefail
+        set -euxo pipefail
         rm -rf /var/run/postgresql
         mkdir -p /var/run/postgresql
         chown -Rf postgres:postgres /var/run/postgresql
@@ -134,7 +134,7 @@
 
     - name: "prepare /usr/share/postgresql/postgresql.conf.sample"
       shell: |
-        set -euo pipefail
+        set -euxo pipefail
         mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
         ln -s ../postgresql.conf.sample /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample
       args:
