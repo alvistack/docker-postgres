@@ -4,7 +4,9 @@
 [![GitHub release](https://img.shields.io/github/release/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/blob/master/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/postgres-12.svg)](https://hub.docker.com/r/alvistack/postgres-12)
+
 PostgreSQL is a powerful, open source object-relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness.
+
 Learn more about PostgreSQL: <https://www.postgresql.org/>
 
 ## Supported Tags and Respective Packer Template Links
@@ -19,6 +21,7 @@ Learn more about PostgreSQL: <https://www.postgresql.org/>
 ## Overview
 
 This Docker container makes it easy to get an instance of PostgreSQL up and running.
+
 Based on [Official Ubuntu Docker Image](https://hub.docker.com/_/ubuntu/) with some minor hack:
 
   - Packaging by Packer Docker builder and Ansible provisioner in single layer
@@ -27,16 +30,20 @@ Based on [Official Ubuntu Docker Image](https://hub.docker.com/_/ubuntu/) with s
 ### Quick Start
 
 For the `VOLUME` directory that is used to store the repository data (amongst other things) we recommend mounting a host directory as a [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/data-volumes), or via a named volume if using a docker version \>= 1.9.
+
 Start PostgreSQL:
-\# Pull latest image
-docker pull alvistack/postgres-12
-\# Run as detach
-docker run   
-\-itd   
-\--name postgres   
-\--publish 5432:5432   
-\--volume /var/lib/postgresql/data:/var/lib/postgresql/data   
-alvistack/postgres-12
+
+    # Pull latest image
+    docker pull alvistack/postgres-12
+    
+    # Run as detach
+    docker run \
+        -itd \
+        --name postgres \
+        --publish 5432:5432 \
+        --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
+        alvistack/postgres-12
+
 **Success**. PostgreSQL is now available on port 5432.
 
 ## Versioning
