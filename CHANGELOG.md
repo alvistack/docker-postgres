@@ -4,6 +4,9 @@
 
 ### Major Changes
 
+  - Support PostgreSQL 14
+  - Remove PostgreSQL 11 support
+
 ## 20211231.1.3 - 2021-12-31
 
 ### Major Changes

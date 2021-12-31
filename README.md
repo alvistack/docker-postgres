@@ -5,7 +5,7 @@
 [![GitLab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/docker-postgres/master)](https://gitlab.com/alvistack/docker-postgres/-/pipelines)
 [![GitHub tag](https://img.shields.io/github/tag/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/tags)
 [![GitHub license](https://img.shields.io/github/license/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/blob/master/LICENSE)
-[![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/postgres-13.svg)](https://hub.docker.com/r/alvistack/postgres-13)
+[![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/postgres-14.svg)](https://hub.docker.com/r/alvistack/postgres-14)
 
 PostgreSQL is a powerful, open source object-relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness.
 
@@ -13,12 +13,12 @@ Learn more about PostgreSQL: <https://www.postgresql.org/>
 
 ## Supported Tags and Respective Packer Template Links
 
+  - [`alvistack/postgres-14`](https://hub.docker.com/r/alvistack/postgres-14)
+      - [`packer/docker-14/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-14/packer.json)
   - [`alvistack/postgres-13`](https://hub.docker.com/r/alvistack/postgres-13)
       - [`packer/docker-13/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-13/packer.json)
   - [`alvistack/postgres-12`](https://hub.docker.com/r/alvistack/postgres-12)
       - [`packer/docker-12/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-12/packer.json)
-  - [`alvistack/postgres-11`](https://hub.docker.com/r/alvistack/postgres-11)
-      - [`packer/docker-11/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-11/packer.json)
 
 ## Overview
 
@@ -36,7 +36,7 @@ For the `VOLUME` directory that is used to store the repository data (amongst ot
 Start PostgreSQL:
 
     # Pull latest image
-    docker pull alvistack/postgres-13
+    docker pull alvistack/postgres-14
     
     # Run as detach
     docker run \
@@ -44,7 +44,7 @@ Start PostgreSQL:
         --name postgres \
         --publish 5432:5432 \
         --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
-        alvistack/postgres-13
+        alvistack/postgres-14
 
 **Success**. PostgreSQL is now available on port 5432.
 
