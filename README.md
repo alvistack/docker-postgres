@@ -3,7 +3,7 @@
 <img src="/alvistack.svg" width="75" alt="AlviStack">
 
 [![GitLab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/docker-postgres/master)](https://gitlab.com/alvistack/docker-postgres/-/pipelines)
-[![GitHub release](https://img.shields.io/github/release/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/releases)
+[![GitHub tag](https://img.shields.io/github/tag/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/tags)
 [![GitHub license](https://img.shields.io/github/license/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/blob/master/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/postgres-13.svg)](https://hub.docker.com/r/alvistack/postgres-13)
 
@@ -52,7 +52,7 @@ Start PostgreSQL:
 
 ### `alvistack/postgres:latest`
 
-The `latest` tag matches the most recent [GitHub Release](https://github.com/alvistack/docker-postgres/releases) of this repository. Thus using `alvistack/postgres:latest` or `alvistack/postgres` will ensure you are running the most up to date stable version of this image.
+The `latest` tag matches the most recent [GitHub Release](https://github.com/alvistack/docker-postgres/tags) of this repository. Thus using `alvistack/postgres:latest` or `alvistack/postgres` will ensure you are running the most up to date stable version of this image.
 
 ### `alvistack/postgres:<version>`
 
