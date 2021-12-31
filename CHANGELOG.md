@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Replace docker with podman
   - Support PostgreSQL 14
   - Remove PostgreSQL 11 support
 
