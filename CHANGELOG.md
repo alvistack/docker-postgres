@@ -5,7 +5,6 @@
 ### Major Changes
 
   - Skip package upgrade before running molecule
-  - Replace docker with podman
   - Support PostgreSQL 14
   - Remove PostgreSQL 11 support
 
