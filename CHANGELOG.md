@@ -4,6 +4,11 @@
 
 ### Major Changes
 
+## 20220211.1.1 - 2022-02-11
+
+### Major Changes
+
+  - Remove Ubuntu 21.04 support
   - Skip package upgrade before running molecule
   - Support PostgreSQL 14
   - Remove PostgreSQL 11 support
