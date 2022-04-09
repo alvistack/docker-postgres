@@ -2,14 +2,14 @@
   "builders": [
     {
       "changes": [
-        "ENV LANG en_US.UTF-8",
-        "ENV LC_ALL en_US.UTF-8",
-        "ENV SHELL /bin/bash",
-        "ENV TZ UTC",
-        "ENV PGDATA /var/lib/postgresql/data",
-        "ENV PATH $PATH:/usr/lib/postgresql/13/bin",
-        "VOLUME $PGDATA",
-        "WORKDIR $PGDATA",
+        "ENV LANG=en_US.UTF-8",
+        "ENV LC_ALL=en_US.UTF-8",
+        "ENV SHELL=/bin/bash",
+        "ENV TZ=UTC",
+        "ENV PGDATA=/var/lib/postgresql/data",
+        "ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/13/bin",
+        "VOLUME /var/lib/postgresql/data",
+        "WORKDIR /var/lib/postgresql/data",
         "EXPOSE 5432",
         "ENTRYPOINT [\"catatonit\", \"-g\", \"--\", \"docker-entrypoint.sh\"]",
         "CMD [\"postgres\"]"
@@ -37,7 +37,7 @@
         "set -eu",
         "apt-get update",
         "DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y",
-        "DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl gcc iproute2 language-pack-en locales python3 sudo"
+        "DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl gcc hostname iproute2 language-pack-en locales python3 sudo"
       ],
       "type": "shell"
     },
