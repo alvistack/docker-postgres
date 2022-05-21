@@ -18,9 +18,10 @@ namespace: alvistack
 name: docker-postgres
 description: Docker Image Packaging for PostgreSQL
 
-version: VERSION
+version: 0.0.0
 readme: README.md
-license: Apache-2.0
+license:
+  - Apache-2.0
 
 repository: https://github.com/alvistack/docker-postgres
 documentation: https://github.com/alvistack/docker-postgres
