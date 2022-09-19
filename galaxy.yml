@@ -15,7 +15,7 @@
 # limitations under the License.
 
 namespace: alvistack
-name: docker-postgres
+name: postgres
 description: Docker Image Packaging for PostgreSQL
 
 version: 0.0.0
