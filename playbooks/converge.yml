@@ -98,22 +98,24 @@
       failed_when: false
 
     - name: purge /var/lib/postgresql/data
-      ansible.builtin.shell: |
-        set -euxo pipefail
-        mkdir -p /var/lib/postgresql/data
-        find /var/lib/postgresql/data -mindepth 1 -delete
+      ansible.builtin.shell:
+        cmd: |
+          set -euxo pipefail
+          mkdir -p /var/lib/postgresql/data
+          find /var/lib/postgresql/data -mindepth 1 -delete
       args:
         executable: "/bin/bash"
       register: result
       changed_when: result is not succeeded
 
     - name: re-create /var/run/postgresql
-      ansible.builtin.shell: |
-        set -euxo pipefail
-        rm -rf /var/run/postgresql
-        mkdir -p /var/run/postgresql
-        chown -Rf postgres:postgres /var/run/postgresql
-        chmod 2777 /var/run/postgresql
+      ansible.builtin.shell:
+        cmd: |
+          set -euxo pipefail
+          rm -rf /var/run/postgresql
+          mkdir -p /var/run/postgresql
+          chown -Rf postgres:postgres /var/run/postgresql
+          chmod 2777 /var/run/postgresql
       args:
         executable: "/bin/bash"
       register: result
@@ -134,10 +136,11 @@
         - { dest: "/var/run/postgresql", owner: "postgres", group: "postgres", mode: "2777" }
 
     - name: "prepare /usr/share/postgresql/postgresql.conf.sample"
-      ansible.builtin.shell: |
-        set -euxo pipefail
-        mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
-        ln -s ../postgresql.conf.sample /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample
+      ansible.builtin.shell:
+        cmd: |
+          set -euxo pipefail
+          mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
+          ln -s ../postgresql.conf.sample /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample
       args:
         executable: "/bin/bash"
         creates: "/usr/share/postgresql/postgresql.conf.sample"
