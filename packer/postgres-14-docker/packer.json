@@ -42,6 +42,14 @@
       "type": "shell"
     },
     {
+      "inline": [
+        "set -eu",
+        "groupadd -r -g 999 postgres",
+        "useradd -r -g 999 -u 999 -d /var/lib/postgresql -s /bin/bash -M postgres"
+      ],
+      "type": "shell"
+    },
+    {
       "galaxy_file": "./ansible-galaxy-requirements.yml",
       "inventory_directory": "./",
       "playbook_file": "./packer.yml",

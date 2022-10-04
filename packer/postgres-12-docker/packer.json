@@ -7,7 +7,7 @@
         "ENV SHELL=/bin/bash",
         "ENV TZ=UTC",
         "ENV PGDATA=/var/lib/postgresql/data",
-        "ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/13/bin",
+        "ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/12/bin",
         "VOLUME /var/lib/postgresql/data",
         "WORKDIR /var/lib/postgresql/data",
         "EXPOSE 5432",
@@ -38,6 +38,14 @@
         "apt-get update",
         "DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y",
         "DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl gcc hostname iproute2 language-pack-en locales python3 sudo"
+      ],
+      "type": "shell"
+    },
+    {
+      "inline": [
+        "set -eu",
+        "groupadd -r -g 999 postgres",
+        "useradd -r -g 999 -u 999 -d /var/lib/postgresql -s /bin/bash -M postgres"
       ],
       "type": "shell"
     },

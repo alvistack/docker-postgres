@@ -89,14 +89,6 @@
       ansible.builtin.include_role:
         name: postgres
 
-    - name: stop service
-      ansible.builtin.service:
-        name: "postgresql"
-        state: "stopped"
-        enabled: true
-      changed_when: false
-      failed_when: false
-
     - name: purge /var/lib/postgresql/data
       ansible.builtin.shell:
         cmd: |
@@ -107,6 +99,7 @@
         executable: "/bin/bash"
       register: result
       changed_when: result is not succeeded
+      failed_when: false
 
     - name: re-create /var/run/postgresql
       ansible.builtin.shell:
@@ -120,6 +113,7 @@
         executable: "/bin/bash"
       register: result
       changed_when: result is not succeeded
+      failed_when: false
 
     - name: prepare directories
       ansible.builtin.file:
