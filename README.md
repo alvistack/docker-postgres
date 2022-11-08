@@ -13,12 +13,12 @@ Learn more about PostgreSQL: <https://www.postgresql.org/>
 
 ## Supported Tags and Respective Packer Template Links
 
-  - [`alvistack/postgres-14`](https://hub.docker.com/r/alvistack/postgres-14)
-      - [`packer/docker-14/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-14/packer.json)
-  - [`alvistack/postgres-13`](https://hub.docker.com/r/alvistack/postgres-13)
-      - [`packer/docker-13/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-13/packer.json)
-  - [`alvistack/postgres-12`](https://hub.docker.com/r/alvistack/postgres-12)
-      - [`packer/docker-12/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-12/packer.json)
+-   [`alvistack/postgres-14`](https://hub.docker.com/r/alvistack/postgres-14)
+    -   [`packer/docker-14/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-14/packer.json)
+-   [`alvistack/postgres-13`](https://hub.docker.com/r/alvistack/postgres-13)
+    -   [`packer/docker-13/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-13/packer.json)
+-   [`alvistack/postgres-12`](https://hub.docker.com/r/alvistack/postgres-12)
+    -   [`packer/docker-12/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-12/packer.json)
 
 ## Overview
 
@@ -26,8 +26,8 @@ This Docker container makes it easy to get an instance of PostgreSQL up and runn
 
 Based on [Official Ubuntu Docker Image](https://hub.docker.com/_/ubuntu/) with some minor hack:
 
-  - Packaging by Packer Docker builder and Ansible provisioner in single layer
-  - Handle `ENTRYPOINT` with [catatonit](https://github.com/openSUSE/catatonit)
+-   Packaging by Packer Docker builder and Ansible provisioner in single layer
+-   Handle `ENTRYPOINT` with [catatonit](https://github.com/openSUSE/catatonit)
 
 ### Quick Start
 
@@ -37,7 +37,7 @@ Start PostgreSQL:
 
     # Pull latest image
     docker pull alvistack/postgres-14
-    
+
     # Run as detach
     docker run \
         -itd \
@@ -60,11 +60,11 @@ The version tags are rolling release rebuild by [Travis](https://travis-ci.com/a
 
 ## License
 
-  - Code released under [Apache License 2.0](LICENSE)
-  - Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+-   Code released under [Apache License 2.0](LICENSE)
+-   Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
 ## Author Information
 
-  - Wong Hoi Sing Edison
-      - <https://twitter.com/hswong3i>
-      - <https://github.com/hswong3i>
+-   Wong Hoi Sing Edison
+    -   <https://twitter.com/hswong3i>
+    -   <https://github.com/hswong3i>
