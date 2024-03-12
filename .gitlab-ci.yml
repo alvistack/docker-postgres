@@ -138,24 +138,24 @@ build:postgres-16-docker:
   <<: *job-packer-build
   stage: build
   cache:
-    key: "$CI_PIPELINE_ID-postgres-16-docker"
+    key: $CI_PIPELINE_ID-postgres-16-docker
     paths:
       - packer/*/output-docker
   variables:
-    _IMAGE: "postgres-16"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-16
+    _PROVIDER: docker
 
 test:postgres-16-docker:
   <<: *job-molecule-test
   stage: test
   cache:
-    key: "$CI_PIPELINE_ID-postgres-16-docker"
+    key: $CI_PIPELINE_ID-postgres-16-docker
     paths:
       - packer/*/output-docker
     policy: pull
   variables:
-    _IMAGE: "postgres-16"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-16
+    _PROVIDER: docker
   needs:
     - build:postgres-16-docker
 
@@ -163,13 +163,13 @@ deploy:postgres-16-docker:
   <<: *job-docker-push
   stage: deploy
   cache:
-    key: "$CI_PIPELINE_ID-postgres-16-docker"
+    key: $CI_PIPELINE_ID-postgres-16-docker
     paths:
       - packer/*/output-docker
     policy: pull
   variables:
-    _IMAGE: "postgres-16"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-16
+    _PROVIDER: docker
   needs:
     - test:postgres-16-docker
 
@@ -177,24 +177,24 @@ build:postgres-15-docker:
   <<: *job-packer-build
   stage: build
   cache:
-    key: "$CI_PIPELINE_ID-postgres-15-docker"
+    key: $CI_PIPELINE_ID-postgres-15-docker
     paths:
       - packer/*/output-docker
   variables:
-    _IMAGE: "postgres-15"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-15
+    _PROVIDER: docker
 
 test:postgres-15-docker:
   <<: *job-molecule-test
   stage: test
   cache:
-    key: "$CI_PIPELINE_ID-postgres-15-docker"
+    key: $CI_PIPELINE_ID-postgres-15-docker
     paths:
       - packer/*/output-docker
     policy: pull
   variables:
-    _IMAGE: "postgres-15"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-15
+    _PROVIDER: docker
   needs:
     - build:postgres-15-docker
 
@@ -202,13 +202,13 @@ deploy:postgres-15-docker:
   <<: *job-docker-push
   stage: deploy
   cache:
-    key: "$CI_PIPELINE_ID-postgres-15-docker"
+    key: $CI_PIPELINE_ID-postgres-15-docker
     paths:
       - packer/*/output-docker
     policy: pull
   variables:
-    _IMAGE: "postgres-15"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-15
+    _PROVIDER: docker
   needs:
     - test:postgres-15-docker
 
@@ -216,24 +216,24 @@ build:postgres-14-docker:
   <<: *job-packer-build
   stage: build
   cache:
-    key: "$CI_PIPELINE_ID-postgres-14-docker"
+    key: $CI_PIPELINE_ID-postgres-14-docker
     paths:
       - packer/*/output-docker
   variables:
-    _IMAGE: "postgres-14"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-14
+    _PROVIDER: docker
 
 test:postgres-14-docker:
   <<: *job-molecule-test
   stage: test
   cache:
-    key: "$CI_PIPELINE_ID-postgres-14-docker"
+    key: $CI_PIPELINE_ID-postgres-14-docker
     paths:
       - packer/*/output-docker
     policy: pull
   variables:
-    _IMAGE: "postgres-14"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-14
+    _PROVIDER: docker
   needs:
     - build:postgres-14-docker
 
@@ -241,12 +241,12 @@ deploy:postgres-14-docker:
   <<: *job-docker-push
   stage: deploy
   cache:
-    key: "$CI_PIPELINE_ID-postgres-14-docker"
+    key: $CI_PIPELINE_ID-postgres-14-docker
     paths:
       - packer/*/output-docker
     policy: pull
   variables:
-    _IMAGE: "postgres-14"
-    _PROVIDER: "docker"
+    _IMAGE: postgres-14
+    _PROVIDER: docker
   needs:
     - test:postgres-14-docker

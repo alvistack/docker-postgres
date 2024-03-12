@@ -1,5 +1,4 @@
 ---
-
 # Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@
   become: true
   tasks:
     - name: include default variables
-      ansible.builtin.include_vars: "./vars/main.yml"
+      ansible.builtin.include_vars: ./vars/main.yml
 
     - name: include release specific variables
       ansible.builtin.include_vars: "{{ _loop_var }}"
@@ -37,7 +36,7 @@
             - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
             - "{{ ansible_os_family | lower }}.yml"
           paths:
-            - "./vars"
+            - ./vars
           skip: true
 
     - name: include release specific tasks
@@ -55,11 +54,11 @@
             - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
             - "{{ ansible_os_family | lower }}.yml"
           paths:
-            - "./tasks"
+            - ./tasks
           skip: true
 
     - name: include default tasks
-      ansible.builtin.include_tasks: "./tasks/main.yml"
+      ansible.builtin.include_tasks: ./tasks/main.yml
 
     - name: include role
       ansible.builtin.include_role:
@@ -96,7 +95,7 @@
           mkdir -p /var/lib/postgresql/data
           find /var/lib/postgresql/data -mindepth 1 -delete
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       register: result
       changed_when: result is not succeeded
       failed_when: false
@@ -110,7 +109,7 @@
           chown -Rf postgres:postgres /var/run/postgresql
           chmod 2777 /var/run/postgresql
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       register: result
       changed_when: result is not succeeded
       failed_when: false
@@ -123,21 +122,21 @@
         mode: "{{ item.mode | default('0755') }}"
         state: "{{ item.state | default('directory') }}"
       loop:
-        - { dest: "/docker-entrypoint-initdb.d" }
+        - { dest: /docker-entrypoint-initdb.d }
         - { dest: "/usr/share/postgresql/{{ postgres_release }}" }
-        - { dest: "/var/lib/postgresql", owner: "postgres", group: "postgres" }
-        - { dest: "/var/lib/postgresql/data", owner: "postgres", group: "postgres" }
-        - { dest: "/var/run/postgresql", owner: "postgres", group: "postgres", mode: "2777" }
+        - { dest: /var/lib/postgresql, owner: postgres, group: postgres }
+        - { dest: /var/lib/postgresql/data, owner: postgres, group: postgres }
+        - { dest: /var/run/postgresql, owner: postgres, group: postgres, mode: "2777" }
 
-    - name: "prepare /usr/share/postgresql/postgresql.conf.sample"
+    - name: prepare /usr/share/postgresql/postgresql.conf.sample
       ansible.builtin.shell:
         cmd: |
           set -euxo pipefail
           mv /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample /usr/share/postgresql/
           ln -s ../postgresql.conf.sample /usr/share/postgresql/{{ postgres_release }}/postgresql.conf.sample
       args:
-        executable: "/bin/bash"
-        creates: "/usr/share/postgresql/postgresql.conf.sample"
+        executable: /bin/bash
+        creates: /usr/share/postgresql/postgresql.conf.sample
       register: result
       until: result is succeeded
       changed_when: result is not succeeded
@@ -150,7 +149,7 @@
         group: "{{ item.group | default('root') }}"
         mode: "{{ item.mode | default('0644') }}"
       loop:
-        - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
+        - { dest: /usr/share/postgresql/postgresql.conf.sample }
 
     - name: prepare files
       ansible.builtin.file:
@@ -160,4 +159,4 @@
         mode: "{{ item.mode | default('0644') }}"
         state: "{{ item.state | default('file') }}"
       loop:
-        - { dest: "/usr/share/postgresql/postgresql.conf.sample" }
+        - { dest: /usr/share/postgresql/postgresql.conf.sample }
