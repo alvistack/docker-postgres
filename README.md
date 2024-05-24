@@ -20,12 +20,12 @@ Learn more about PostgreSQL: <https://www.postgresql.org/>
 
 ## Supported Tags and Respective Packer Template Links
 
--   [`alvistack/postgres-16`](https://hub.docker.com/r/alvistack/postgres-16)
-    -   [`packer/docker-16/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-16/packer.json)
--   [`alvistack/postgres-15`](https://hub.docker.com/r/alvistack/postgres-15)
-    -   [`packer/docker-15/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-15/packer.json)
--   [`alvistack/postgres-14`](https://hub.docker.com/r/alvistack/postgres-14)
-    -   [`packer/docker-14/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-14/packer.json)
+- [`alvistack/postgres-16`](https://hub.docker.com/r/alvistack/postgres-16)
+  - [`packer/docker-16/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-16/packer.json)
+- [`alvistack/postgres-15`](https://hub.docker.com/r/alvistack/postgres-15)
+  - [`packer/docker-15/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-15/packer.json)
+- [`alvistack/postgres-14`](https://hub.docker.com/r/alvistack/postgres-14)
+  - [`packer/docker-14/packer.json`](https://github.com/alvistack/docker-postgres/blob/master/packer/docker-14/packer.json)
 
 ## Overview
 
@@ -35,10 +35,10 @@ and running.
 Based on [Official Ubuntu Docker
 Image](https://hub.docker.com/_/ubuntu/) with some minor hack:
 
--   Packaging by Packer Docker builder and Ansible provisioner in single
-    layer
--   Handle `ENTRYPOINT` with
-    [catatonit](https://github.com/openSUSE/catatonit)
+- Packaging by Packer Docker builder and Ansible provisioner in single
+  layer
+- Handle `ENTRYPOINT` with
+  [catatonit](https://github.com/openSUSE/catatonit)
 
 ### Quick Start
 
@@ -81,12 +81,12 @@ packages provided by the base image project.
 
 ## License
 
--   Code released under [Apache License 2.0](LICENSE)
--   Docs released under [CC BY
-    4.0](http://creativecommons.org/licenses/by/4.0/)
+- Code released under [Apache License 2.0](LICENSE)
+- Docs released under [CC BY
+  4.0](http://creativecommons.org/licenses/by/4.0/)
 
 ## Author Information
 
--   Wong Hoi Sing Edison
-    -   <https://twitter.com/hswong3i>
-    -   <https://github.com/hswong3i>
+- Wong Hoi Sing Edison
+  - <https://twitter.com/hswong3i>
+  - <https://github.com/hswong3i>
