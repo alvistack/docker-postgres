@@ -9,7 +9,7 @@ tag](https://img.shields.io/github/tag/alvistack/docker-postgres.svg)](https://g
 [![GitHub
 license](https://img.shields.io/github/license/alvistack/docker-postgres.svg)](https://github.com/alvistack/docker-postgres/blob/master/LICENSE)
 [![Docker
-Pulls](https://img.shields.io/docker/pulls/alvistack/postgres-17.svg)](https://hub.docker.com/r/alvistack/postgres-17)
+Pulls](https://img.shields.io/docker/pulls/alvistack/postgres-16.svg)](https://hub.docker.com/r/alvistack/postgres-16)
 
 PostgreSQL is a powerful, open source object-relational database system.
 It has more than 15 years of active development and a proven
@@ -50,7 +50,7 @@ or via a named volume if using a docker version \>= 1.9.
 Start PostgreSQL:
 
     # Pull latest image
-    docker pull alvistack/postgres-17
+    docker pull alvistack/postgres-16
 
     # Run as detach
     docker run \
@@ -58,7 +58,7 @@ Start PostgreSQL:
         --name postgres \
         --publish 5432:5432 \
         --volume /var/lib/postgresql/data:/var/lib/postgresql/data \
-        alvistack/postgres-17
+        alvistack/postgres-16
 
 **Success**. PostgreSQL is now available on port 5432.
 
