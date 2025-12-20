@@ -134,6 +134,45 @@ default:
     - *script-git-submodule
     - *script-linters
 
+build:postgres-18-docker:
+  <<: *job-packer-build
+  stage: build
+  cache:
+    key: $CI_PIPELINE_ID-postgres-18-docker
+    paths:
+      - packer/*/output-docker
+  variables:
+    _IMAGE: postgres-18
+    _PROVIDER: docker
+
+test:postgres-18-docker:
+  <<: *job-molecule-test
+  stage: test
+  cache:
+    key: $CI_PIPELINE_ID-postgres-18-docker
+    paths:
+      - packer/*/output-docker
+    policy: pull
+  variables:
+    _IMAGE: postgres-18
+    _PROVIDER: docker
+  needs:
+    - build:postgres-18-docker
+
+deploy:postgres-18-docker:
+  <<: *job-docker-push
+  stage: deploy
+  cache:
+    key: $CI_PIPELINE_ID-postgres-18-docker
+    paths:
+      - packer/*/output-docker
+    policy: pull
+  variables:
+    _IMAGE: postgres-18
+    _PROVIDER: docker
+  needs:
+    - test:postgres-18-docker
+
 build:postgres-17-docker:
   <<: *job-packer-build
   stage: build
@@ -211,42 +250,3 @@ deploy:postgres-16-docker:
     _PROVIDER: docker
   needs:
     - test:postgres-16-docker
-
-build:postgres-15-docker:
-  <<: *job-packer-build
-  stage: build
-  cache:
-    key: $CI_PIPELINE_ID-postgres-15-docker
-    paths:
-      - packer/*/output-docker
-  variables:
-    _IMAGE: postgres-15
-    _PROVIDER: docker
-
-test:postgres-15-docker:
-  <<: *job-molecule-test
-  stage: test
-  cache:
-    key: $CI_PIPELINE_ID-postgres-15-docker
-    paths:
-      - packer/*/output-docker
-    policy: pull
-  variables:
-    _IMAGE: postgres-15
-    _PROVIDER: docker
-  needs:
-    - build:postgres-15-docker
-
-deploy:postgres-15-docker:
-  <<: *job-docker-push
-  stage: deploy
-  cache:
-    key: $CI_PIPELINE_ID-postgres-15-docker
-    paths:
-      - packer/*/output-docker
-    policy: pull
-  variables:
-    _IMAGE: postgres-15
-    _PROVIDER: docker
-  needs:
-    - test:postgres-15-docker
